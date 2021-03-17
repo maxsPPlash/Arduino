@@ -30,15 +30,15 @@ void setup() {
 }
 
 void loop(){
-  WiFiClient client = server.available();   // Listen for incoming clients
+  WiFiClient client = server.available();   
   
-    if (client) {                             // If a new client connects,
-    Serial.println("New Client.");          // print a message out in the serial port
-    String currentLine = "";                // make a String to hold incoming data from the client
+    if (client) {                           
+    Serial.println("New Client.");          
+    String currentLine = "";                
     while (client.connected()) 
     {            // loop while the client's connected
-      if (client.available()) {             // if there's bytes to read from the client,
-        char c = client.read();             // read a byte, then
+      if (client.available()) {             
+        char c = client.read();            
 
         if (c == 'L') {
           Serial.println("Led change");

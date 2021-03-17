@@ -21,8 +21,6 @@ void setup() {
 
   pinMode (LED_BUILTIN, OUTPUT);
 
-  //Initialize serial and wait for port to open:
-
   Serial.begin(9600);
 
 //  while (!Serial) {
@@ -38,9 +36,7 @@ void setup() {
     Serial.print("Attempting to connect to SSID: ");
 
     Serial.println(ssid);
-
-    // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
-
+	
     status = WiFi.begin(ssid, pass);
 
     // wait 10 seconds for connection:

@@ -15,20 +15,12 @@ int keyIndex = 0;            // your network key Index number (needed only for W
 
 unsigned int localPort = 15000;      // local port to listen on
 
-//int LED_BUILTIN = 2;
-//bool cur_led = false;
-
-char packetBuffer[255]; //buffer to hold incoming packet
-char  ReplyBuffer[] = "acknowledged";       // a string to send back
+char packetBuffer[255]; 
+char  ReplyBuffer[] = "acknowledged";
 
 WiFiUDP Udp;
 
 void setup() {
-
-//  pinMode (LED_BUILTIN, OUTPUT);
-
-  //Initialize serial and wait for port to open:
-
   Serial.begin(9600);
 
 //  while (!Serial) {
@@ -37,19 +29,13 @@ void setup() {
 
 //  }
 
-  // attempt to connect to Wifi network:
-
   while (status != WL_CONNECTED) {
 
     Serial.print("Attempting to connect to SSID: ");
 
     Serial.println(ssid);
 
-    // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
-
     status = WiFi.begin(ssid, pass);
-
-    // wait 10 seconds for connection:
 
     delay(10000);
 
@@ -60,8 +46,6 @@ void setup() {
   printWifiStatus();
 
   Serial.println("\nStarting connection to server...");
-
-  // if you get a connection, report back via serial:
 
   Udp.begin(localPort);
 
@@ -79,9 +63,6 @@ void setup() {
 int k = 0;
 
 void loop() {
-
-  // if there's data available, read a packet
-
   int packetSize = Udp.parsePacket();
 
   if (packetSize) {
@@ -144,8 +125,6 @@ void taskLED( void * parameter )
       else
         leds[i] = CRGB(0, 0, 0);
     }
-    //k++;
-    //k%= NUM_LEDS;
     FastLED.show();
     delay(1000);
   }
